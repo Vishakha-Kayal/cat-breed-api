@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cats breed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <aside>
+            <button>CHOOSE CAT BREED</button>
+            <form>
+                <H1>SELECT ⬇️</H1>
+                <select name="catch" id="catbreed" onchange="getSelectedValue()">
+                    <option value="Abyssinian">Abyssinian</option>
+                    <option value="siamese">Siamese</option>
+                    <option value="Ragdoll">Ragdoll Cats</option>
+                    <option value="Birman">Birman</option>
+                    <option value="sphynx">sphynx</option>
+                    <option value="burmese">burmese</option>
+                    <option value="persian">persian cat</option>
+                    <option value="british shorthair">british shorthair</option>
+                    <option value="british shorthair">scottish fold</option>
+                    <option value="british shorthair">exotic shorthair</option>
+                    <option value="burmese">burmese</option>
+                </select>
+                <img src="https://api-ninjas.com/images/cats/siamese_cat.jpg" alt="" class="cat-image">
+            </form>
+        </aside>
+        <aside>
+            <h3>BREED DETAILS</h3>
+
+            <table>
+                <tr>
+                    <th>Name Of The Cat Breed</th>
+                    <th id="nam">Abyssinian</th>
+                </tr>
+                <tr>
+                    <td>Children-friendly</td>
+                    <td id="len">5</td>
+                </tr>
+                <tr>
+                    <td>Origin</td>
+                    <td id="origin">Southeast Asia</td>
+                </tr>
+                <tr>
+                    <td>Intelligence</td>
+                    <td id="inte">5</td>
+                </tr>
+                <tr>
+                    <td>Min-Weight</td>
+                    <td id="min-weight">6</td>
+                </tr>
+                <tr>
+                    <td>Max-Weight</td>
+                    <td id="max-weight">10</td>
+                </tr>
+                <tr>
+                    <td>playfulness</td>
+                    <td id="play">5</td>
+                </tr>
+            </table>
+
+            <div>
+
+            </div>
+        </aside>
+    </main>
+</body>
+<script>
+    let selectedCatName;
+    let selectedCatValue = 'abyssinian';
+    let btn = document.querySelector('button')
+    btn.addEventListener('click',() => {
+        console.log('clicked');
+        document.querySelector('main').style.visibility = 'visible';
+        btn.style.visibility='hidden';
+    })
+    function getSelectedValue(val) {
+        selectedCatName = document.querySelector('#catbreed');
+        selectedCatValue = selectedCatName.value;
+        console.log(selectedCatValue);
+        fetchCatBreed()
+    }
+    console.log();
+    const apiKey = 'ZpfpPy78tmfMwHaiHgwEgVbADD2h1A4k6s3Ley0i'
+    const apiUrl = 'https://api.api-ninjas.com/v1/cats?name=';
+
+    async function fetchCatBreed() {
+        try {
+            const response = await fetch(apiUrl + selectedCatValue + `&X-Api-Key=${apiKey}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            const data = await response.json();
+            document.querySelector('.cat-image').src = data[0].image_link;
+            document.getElementById('nam').innerHTML = data[0].name;
+            document.getElementById('len').innerHTML = data[0].children_friendly;
+            document.getElementById('origin').innerHTML = data[0].origin;
+            document.getElementById('inte').innerHTML = data[0].intelligence;
+            document.getElementById('min-weight').innerHTML = data[0].min_weight;
+            document.getElementById('max-weight').innerHTML = data[0].max_weight;
+            document.getElementById('play').innerHTML = data[0].playfulness;
+   
+        }
+        catch (error) {
+            console.log('E:', error);
+        }
+    }
+
+</script>
+
+</html>

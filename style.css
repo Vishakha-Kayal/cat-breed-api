@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gellix';
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    overflow: hidden;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 2vw;
+    visibility: hidden;
+}
+
+aside:first-child {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    visibility: visible;
+    width: 25%;
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    box-shadow: 3px 2px 1px rgba(0, 0, 0, 0.385);
+    margin-bottom: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+form {
+    height: 100%;
+    width:46%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3rem 0;
+}
+
+#catbreed {
+    padding: 11px;
+    font-size: 1.6rem;
+}
+
+#catbreed option {
+    padding: 100px;
+    font-size: 1.6rem;
+}
+
+aside:last-child {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 3rem;
+    gap: 2rem;
+}
+.cat-image{
+    width:100%;
+    height: 40%;
+}
+aside:last-child h3 {
+    font-size: 2.5rem;
+}
+
+table,
+th,
+td {
+    font-size: 1.8rem;
+    border: 1px solid;
+    text-align: center;
+    width:100%;
+    padding: 0.5rem;
+}
+
+@media(max-width:800px){
+    main{
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        padding-left: 180px;
+    }
+    button{
+        width:19rem;
+    }
+    aside:first-child {
+        height: 45%;
+    }
+    
+}
